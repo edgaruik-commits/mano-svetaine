@@ -26,6 +26,7 @@
     --steel-deep:#26404F;
     --ember:#B8703B;
     --card:#E8E4D6;
+    --card-deep:#DAD3BC;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -53,52 +54,66 @@
   .hero{padding:56px 0 40px;}
   .kicker{font-family:'IBM Plex Mono', monospace;font-size:12.5px;color:var(--ember);margin-bottom:14px;letter-spacing:0.02em;}
   .hero h1{font-size:40px;line-height:1.18;max-width:640px;letter-spacing:-0.01em;}
-  .hero p.lead{max-width:540px;font-size:17px;color:var(--graphite-soft);margin-top:20px;}
+  .hero p.lead{max-width:540px;font-size:15px;color:var(--graphite-soft);margin-top:20px;}
   section{padding:52px 0;}
   section.divide{border-top:1px solid var(--line);}
   h2{font-size:26px;max-width:560px;}
   .section-body{margin-top:22px;}
-  .section-body p{max-width:620px;color:var(--graphite-soft);}
+  .section-body p{max-width:620px;font-size:15px;color:var(--graphite-soft);}
   .pair{display:grid;grid-template-columns:1fr;gap:28px;margin-top:24px;}
   .pair .col h3{font-family:'IBM Plex Sans';font-weight:600;font-size:15px;color:var(--graphite);}
-  .pair .col p{margin-top:10px;font-size:14.5px;color:var(--graphite-soft);}
+  .pair .col p{margin-top:10px;font-size:15px;color:var(--graphite-soft);}
   .pair .col.a{border-left:2px solid var(--steel);padding-left:20px;}
   .pair .col.b{border-left:2px solid var(--ember);padding-left:20px;}
-  .offer{margin-top:8px;}
+  .offer{margin-top:24px;display:grid;grid-template-columns:1fr;gap:16px;}
   .offer-item{
-  display:block;
-    padding:22px 0;border-top:1px solid var(--line);
+    display:block;
+    background:var(--card-deep);
+    border:1px solid var(--line);
+    padding:24px;
+    box-sizing:border-box;
+    width:100%;
   }
-  .offer-item:first-child{border-top:none;}
   .offer-item .idx{font-family:'IBM Plex Mono', monospace;font-size:13px;color:var(--graphite-soft);padding-top:3px;}
   .offer-item h3{font-family:'IBM Plex Sans';font-weight:600;font-size:16px;}
-  .offer-item p{margin-top:8px;font-size:14.5px;color:var(--graphite-soft);max-width:540px;}
+  .offer-item p{margin-top:8px;font-size:15px;color:var(--graphite-soft);max-width:100%;}
   .world-map{margin-top:28px;padding:12px;background:var(--card);box-sizing:border-box;width:100%;}
   .world-map svg{width:100%;height:auto;display:block;}
   .markets{margin-top:24px;display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
   .market-card{background:var(--paper);padding:24px;}
   .market-card .tag{font-family:'IBM Plex Mono', monospace;font-size:11.5px;color:var(--steel-deep);letter-spacing:0.04em;}
   .market-card h3{font-family:'Fraunces';font-size:20px;margin-top:8px;}
-  .market-card p{font-size:13.5px;color:var(--graphite-soft);margin-top:10px;}
+  .market-card p{font-size:15px;color:var(--graphite-soft);margin-top:10px;}
   .about-card{
     background:var(--card);border:1px solid var(--line);padding:18px;margin-top:24px;
     box-sizing:border-box;width:100%;
   }
-  .about-card .fact{font-size:13px;color:var(--graphite-soft);}
+  .about-card .fact{font-size:15px;color:var(--graphite-soft);}
   .about-card .fact b{color:var(--graphite);font-weight:600;}
-  .about-grid{display:grid;grid-template-columns:1fr;gap:4px;padding:12px 0;border-top:1px solid var(--line);}
+  .about-grid{display:grid;grid-template-columns:160px 1fr;gap:6px 20px;padding:12px 0;border-top:1px solid var(--line);align-items:start;}
   .about-grid:last-child{}
+  .about-grid .fact p{text-align:left;}
   .contact{padding-bottom:80px;}
   .contact-box{
     background:var(--graphite);color:var(--paper);
     padding:40px;margin-top:24px;
   }
   .contact-box h2{color:var(--paper);}
-  .contact-box p{color:#B9B5A8;max-width:480px;margin-top:14px;}
+  .contact-box p{color:#B9B5A8;font-size:15px;max-width:480px;margin-top:14px;}
   .contact-lines{margin-top:28px;display:flex;flex-direction:column;gap:10px;font-family:'IBM Plex Mono', monospace;font-size:14px;}
   .contact-lines a{color:var(--paper);text-decoration:none;border-bottom:1px solid #565C55;}
   .contact-lines a:hover{border-color:var(--paper);}
   .fill-note{display:inline-block;background:#3A4148;color:#D7D3C4;font-size:11px;padding:2px 6px;margin-left:8px;font-family:'IBM Plex Sans';}
+  .social-row{margin-top:24px;display:flex;gap:16px;align-items:center;}
+  .social-row a{
+    display:flex;align-items:center;justify-content:center;
+    width:38px;height:38px;border-radius:50%;
+    background:rgba(241,239,230,0.08);border:1px solid #565C55;
+    transition:background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+  }
+  .social-row a:hover{background:rgba(241,239,230,0.18);border-color:var(--paper);transform:translateY(-2px);}
+  .social-row a svg{width:18px;height:18px;display:block;}
+  .social-row a svg path, .social-row a svg circle, .social-row a svg rect{fill:var(--paper);}
   footer{padding:28px 0 40px;}
   footer p{font-size:12.5px;color:var(--graphite-soft);}
   @media (max-width:640px){
@@ -106,7 +121,7 @@
     .pair{grid-template-columns:1fr;}
     .markets{grid-template-columns:1fr;}
     .about-grid{grid-template-columns:1fr;}
-    .offer-item{grid-template-columns:40px 1fr;}
+    .offer-item{padding:18px;}
     .contact-box{padding:26px;}
     .world-map{padding:14px;}
   }
@@ -179,52 +194,40 @@
     <h2>From drawing to a running production plant</h2>
     <div class="offer">
       <div class="offer-item">
-        <div>
-          <h3>Investment &amp; market entry</h3>
-          <p>​Feasibility & CAPEX Analysis: Independent evaluation of market entry feasibility, projected ROI, baseline financial modeling, and realistic budget estimation.</p>
-          <p>Technology & Supplier Selection: Objective assessment and procurement support for key equipment (rotary kilns, screening systems, thermal processing equipment) tailored to your target output.</p>
-          <p>​Risk Mitigation Strategy: Identification of common industrial setup pitfalls, raw material dependency risks, and operational bottlenecks before capital deployment.</p>
-        </div>
+        <h3>Investment &amp; market entry</h3>
+        <p>Feasibility &amp; CAPEX Analysis: Independent evaluation of market entry feasibility, projected ROI, baseline financial modeling, and realistic budget estimation.</p>
+        <p>Technology &amp; Supplier Selection: Objective assessment and procurement support for key equipment (rotary kilns, screening systems, thermal processing equipment) tailored to your target output.</p>
+        <p>Risk Mitigation Strategy: Identification of common industrial setup pitfalls, raw material dependency risks, and operational bottlenecks before capital deployment.</p>
       </div>
       <div class="offer-item">
-        <div>
-          <h3>Expanded Glass Granulate Production Process</h3>
-<div class="service-item">
-  <p>Raw Material Qualification:Testing and selecting suitable post-consumer or industrial waste glass cullet sources to ensure consistent melting points and expanding properties.</p>
-  <p>Recipe &amp; Batch Formulation:Developing custom agent/additive formulations fine-tuned for precise density, crushing strength, and grain size distribution.</p>
-  <p>Thermal &amp; Process Optimization:Engineering precise temperature profiles and energy-efficient kiln configurations to ensure high yield with minimal power 
+        <h3>Expanded Glass Granulate Production Process</h3>
+        <p>Raw Material Qualification: Testing and selecting suitable post-consumer or industrial waste glass cullet sources to ensure consistent melting points and expanding properties.</p>
+        <p>Recipe &amp; Batch Formulation: Developing custom agent/additive formulations fine-tuned for precise density, crushing strength, and grain size distribution.</p>
+        <p>Thermal &amp; Process Optimization: Engineering precise temperature profiles and energy-efficient kiln configurations to ensure high yield with minimal power consumption.</p>
       </div>
       <div class="offer-item">
-        <div>
-          <h3>Quality control systems</h3>
-          <p>Process Standard Deployment:Implementing strict quality assurance framework covering raw cullet inspection, continuous temperature monitoring, and final product density/strength verification.</p>
-<p>Lab Protocol Setup:Equipping and configuring on-site testing procedures to maintain batch-to-batch consistency and international product certification readiness.</p>
-<p>Real-time Monitoring Architecture:Establishing standard operating parameters that allow operators to spot and correct process deviations immediat immediately.</p>
-        </div>
+        <h3>Quality control systems</h3>
+        <p>Process Standard Deployment: Implementing strict quality assurance framework covering raw cullet inspection, continuous temperature monitoring, and final product density/strength verification.</p>
+        <p>Lab Protocol Setup: Equipping and configuring on-site testing procedures to maintain batch-to-batch consistency and international product certification readiness.</p>
+        <p>Real-time Monitoring Architecture: Establishing standard operating parameters that allow operators to spot and correct process deviations immediately.</p>
       </div>
       <div class="offer-item">
-        <div>
-          <h3>Expanded Glass Plant Commissioning & Start-up</h3>
-          <p>End-to-End Layout &amp; Engineering Oversight: Advisory on optimal equipment placement, airflow, batch transport, and material handling for seamless factory throughput.</p>
-<p>Trial Runs &amp; Commissioning Support: Hands-on supervision during dry/cold and hot commissioning phases to achieve designed production volume safely.</p>
-<p>Yield &amp; Waste Reduction: Fine-tuning parameters during start-up to minimize off-spec granulate and operational waste.</p>
-        </div>
+        <h3>Expanded Glass Plant Commissioning &amp; Start-up</h3>
+        <p>End-to-End Layout &amp; Engineering Oversight: Advisory on optimal equipment placement, airflow, batch transport, and material handling for seamless factory throughput.</p>
+        <p>Trial Runs &amp; Commissioning Support: Hands-on supervision during dry/cold and hot commissioning phases to achieve designed production volume safely.</p>
+        <p>Yield &amp; Waste Reduction: Fine-tuning parameters during start-up to minimize off-spec granulate and operational waste.</p>
       </div>
       <div class="offer-item">
-        <div>
-          <h3>Staff training</h3>
-          <p>Standard Operating Procedures (SOPs): Custom creation of clear operational guides, emergency protocols, and preventative maintenance routines.</p>
-<p>Hands-on Team Coaching: Practical training for engineers, shift supervisors, and line operators based on real-world plant operations.</p>
-<p>Safety &amp; Maintenance Protocols: Establishing routines for critical wear-and-tear components to avoid unplanned facility downtime.</p>
-        </div>
+        <h3>Staff training</h3>
+        <p>Standard Operating Procedures (SOPs): Custom creation of clear operational guides, emergency protocols, and preventative maintenance routines.</p>
+        <p>Hands-on Team Coaching: Practical training for engineers, shift supervisors, and line operators based on real-world plant operations.</p>
+        <p>Safety &amp; Maintenance Protocols: Establishing routines for critical wear-and-tear components to avoid unplanned facility downtime.</p>
       </div>
       <div class="offer-item">
-        <div>
-          <h3>Ongoing Advisory & Post-Commissioning Support</h3>
-          <p>Performance Optimization: Periodic audits to reduce unit production costs, lower thermal energy consumption, and boost throughput speed.</p>
-<p>Process Deviation Diagnostics: Rapid troubleshooting support for unexpected product defects, density shifts, or equipment inefficiency.</p>
-<p>R&amp;D &amp; Product Expansion: Guidance on introducing new product lines (e.g., ultra-lightweight aggregates, specialized acoustic/thermal insulation fillers).</p>
-        </div>
+        <h3>Ongoing Advisory &amp; Post-Commissioning Support</h3>
+        <p>Performance Optimization: Periodic audits to reduce unit production costs, lower thermal energy consumption, and boost throughput speed.</p>
+        <p>Process Deviation Diagnostics: Rapid troubleshooting support for unexpected product defects, density shifts, or equipment inefficiency.</p>
+        <p>R&amp;D &amp; Product Expansion: Guidance on introducing new product lines (e.g., ultra-lightweight aggregates, specialized acoustic/thermal insulation fillers).</p>
       </div>
     </div>
   </section>
@@ -252,6 +255,7 @@
       </div>
       </div>
    </div>
+  </section>
   <section class="divide">
     <div class="kicker">PRODUCERS BY COUNTRY</div>
     <h2>Expanded glass producers by country</h2>
@@ -281,7 +285,7 @@
         <p>Experiencing rapid growth in thermal insulation, energy-efficient infrastructure, and green construction. However, there is virtually no local fine-granulate producer to date, leaving a massive unfulfilled domestic market dependent on expensive overseas supply.</p>
       </div>
       <div class="market-card">
-        <div class="tag"><strong>AUSTRALIA AND NEW ZELAND</strong></div
+        <div class="tag"><strong>AUSTRALIA AND NEW ZELAND</strong></div>
         <p>Tightening sustainable-building codes and harsh climate requirements drive high demand for high-performance insulation. With zero regional producers, the entire Oceania market depends entirely on carbon-intensive, long-distance maritime imports.</p>
       </div>
     </div>
@@ -293,6 +297,17 @@
       <p style="max-width: 100%; width: 100%;">We'll cover raw material availability, market size, and whether it makes sense to start with a technical feasibility study.</p>
       <div class="contact-lines">
         <a href="mailto:info@ega-advisory.com">info@ega-advisory.com</a>
+      </div>
+      <div class="social-row">
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        </a>
+        <a href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.72 3.72 0 0 1-1.38-.9 3.72 3.72 0 0 1-.9-1.38c-.16-.43-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07zM12 0C8.74 0 8.33.01 7.05.07c-1.28.06-2.15.26-2.91.56a5.9 5.9 0 0 0-2.13 1.39A5.9 5.9 0 0 0 .62 4.15c-.3.76-.5 1.63-.56 2.91C0 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.31.79.72 1.46 1.39 2.13.67.67 1.34 1.08 2.13 1.39.76.3 1.63.5 2.91.56C8.33 24 8.74 24 12 24s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.13-1.39 5.9 5.9 0 0 0 1.39-2.13c.3-.76.5-1.63.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.39-2.13A5.9 5.9 0 0 0 19.86.63c-.76-.3-1.63-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
+        </a>
+        <a href="https://wa.me/00000000000" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.47 14.38c-.29-.15-1.73-.85-2-.95-.27-.1-.46-.15-.66.15-.2.29-.76.95-.93 1.14-.17.2-.34.22-.63.07-.29-.15-1.24-.46-2.36-1.46-.87-.78-1.46-1.74-1.63-2.03-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.51-.07-.15-.66-1.6-.91-2.19-.24-.58-.48-.5-.66-.51-.17-.01-.37-.01-.56-.01-.2 0-.51.07-.78.37-.27.29-1.02 1-1.02 2.43s1.05 2.82 1.19 3.01c.15.2 2.06 3.15 5 4.41.7.3 1.24.48 1.67.62.7.22 1.34.19 1.84.12.56-.08 1.73-.71 1.97-1.39.24-.68.24-1.27.17-1.39-.07-.12-.27-.2-.56-.35zM12.02 2C6.5 2 2 6.48 2 12c0 1.88.52 3.64 1.42 5.15L2 22l4.98-1.31A9.96 9.96 0 0 0 12.02 22C17.53 22 22 17.52 22 12S17.53 2 12.02 2zm0 18.06c-1.68 0-3.24-.5-4.55-1.36l-.33-.2-3.31.87.88-3.22-.21-.33A8.03 8.03 0 0 1 3.96 12c0-4.44 3.62-8.05 8.06-8.05 4.44 0 8.05 3.61 8.05 8.05s-3.61 8.06-8.05 8.06z"/></svg>
+        </a>
       </div>
     </div>
   </section>
