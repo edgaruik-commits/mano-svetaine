@@ -114,6 +114,21 @@
   .social-row a:hover{background:rgba(241,239,230,0.18);border-color:var(--paper);transform:translateY(-2px);}
   .social-row a svg{width:18px;height:18px;display:block;}
   .social-row a svg path, .social-row a svg circle, .social-row a svg rect{fill:var(--paper);}
+  nav.mainnav{padding:16px 0;border-bottom:1px solid var(--line);}
+  nav.mainnav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 30px;}
+  nav.mainnav a{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:13px;
+    letter-spacing:0.03em;
+    color:var(--steel-deep);
+    text-decoration:none;
+    text-transform:uppercase;
+    white-space:nowrap;
+  }
+  nav.mainnav a:hover{color:var(--ember);}
+  section[id]{scroll-margin-top:24px;}
   footer{padding:28px 0 40px;}
   footer p{font-size:12.5px;color:var(--graphite-soft);}
   @media (max-width:640px){
@@ -154,20 +169,32 @@
       <span class="loc" style="color: #1F3A4B; font-style: italic; font-size: 11px;">Take the first step — let’s build together</span> &bull; <a href="mailto:info@ega-advisory.com" style="color: inherit; text-decoration: none;">info@ega-advisory.com</a>
     </div>
   </header>
-  <section class="hero">
+  <nav class="mainnav">
+    <ul>
+      <li><a href="#hero">Expanded Glass Advisory</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#offer">What We Offer</a></li>
+      <li><a href="#market">Expanded Glass Market</a></li>
+      <li><a href="#producers">Producers by Country</a></li>
+      <li><a href="#opportunities">Open Niches &amp; Opportunities</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <section class="hero" id="hero">
     <div class="kicker">EXPANDED GLASS ADVISORY</div>
     <h1 style="max-width: 100%; width: 100%; font-size: 28px;">Expanded Glass Production & Plant Setup Advisory</h1>
     <p><em>Independent technical and operational guidance to build, scale, and optimize high-margin expanded glass granulate facilities worldwide.</em></p>
     <p class="lead" style="max-width: 100%; width: 100%;">Entering the high-barrier expanded glass sector requires more than theoretical engineering—it demands proven industrial execution. EGA provides independent advisory to help investors and manufacturing groups de-risk capital investment, optimize CAPEX, and accelerate time-to-market. From raw material testing and technology selection to full plant commissioning, we translate years of operational insight into lean, high-margin production lines built for global scale.</p>
   </section>
-  <section class="divide">
+  <section class="divide" id="about">
     <div class="kicker">ABOUT US</div>
     <h2>Practical execution over theoretical concepts</h2>
     <div class="section-body" style="max-width: 100%; width: 100%;">
        <p style="max-width: 100%; width: 100%;">Expanded Glass Advisory (EGA) was founded to open up expanded glass granulate products for companies looking to invest in and develop high-potential businesses in this high-margin, high-entry-barrier sector.Built on direct experience inside an operating production facility and backed by applied research — rather than limited to a pure lab setting — EGA ensures every recommendation is grounded in practical, science-based manufacturing that delivers reliable performance at scale, day after day.</p>
     </div>
   </section>
-  <section class="divide">
+  <section class="divide" id="experience">
     <div class="kicker">EXPERIENCE</div>
     <h2>Years inside a working plant, not a case study</h2>
     <div class="about-card">
@@ -189,7 +216,7 @@
       </div>
     </div>
   </section>
-  <section class="divide">
+  <section class="divide" id="offer">
     <div class="kicker">WHAT WE OFFER</div>
     <h2>From drawing to a running production plant</h2>
     <div class="offer">
@@ -231,7 +258,7 @@
       </div>
     </div>
   </section>
-  <section class="divide">
+  <section class="divide" id="market">
     <div class="kicker">EXPANDED GLASS GRANULATE MARKET</div>
     <h2 style="max-width: 100%; width: 100%;">Rising demand, a supply base that hasn't kept pace</h2>
    <div class="section-body" style="max-width: 100%; width: 100%;">
@@ -256,7 +283,7 @@
       </div>
    </div>
   </section>
-  <section class="divide">
+  <section class="divide" id="producers">
     <div class="kicker">PRODUCERS BY COUNTRY</div>
     <h2>Expanded glass producers by country</h2>
 <div class="section-body"> 
@@ -268,7 +295,7 @@
   </div>
 </div>
 </section>
-  <section class="divide">
+  <section class="divide" id="opportunities">
     <div class="kicker">OPEN NICHES &amp; OPPORTUNITIES</div>
     <h2>Where local production is still missing</h2>
     <div class="markets">
@@ -290,7 +317,7 @@
       </div>
     </div>
   </section>
-  <section class="contact">
+  <section class="contact" id="contact">
     <div class="kicker">CONTACT</div>
     <div class="contact-box">
 <h3 style="color: #ffffff;">Take the first step – let's build together.</h3>
