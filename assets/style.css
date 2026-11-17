@@ -263,3 +263,29 @@ form.enquiry .note{font-size:14px;color:var(--muted);margin-bottom:26px}
 .btn[disabled]{opacity:.6;cursor:wait}
 .enquiry.sent h3{font-size:26px;margin:4px 0 12px}
 .enquiry.sent p{color:var(--graphite-soft);margin:0}
+
+/* Enquiry pop-up */
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+html.enq-open{overflow:hidden}
+.enq-dialog{border:none;padding:0;margin:auto;width:min(680px,calc(100% - 32px));max-height:calc(100% - 32px);background:var(--paper);color:var(--graphite);box-shadow:0 30px 80px rgba(0,0,0,.35);overflow:auto}
+.enq-dialog::backdrop{background:rgba(20,24,28,.72);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.enq-dialog[open]{animation:enqIn .22s ease-out}
+@keyframes enqIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.enq-dialog[open]{animation:none}}
+.enq-inner{position:relative;padding:44px 44px 36px;border-top:4px solid var(--ember)}
+.enq-close{position:absolute;top:10px;right:10px;width:44px;height:44px;border:none;background:none;font-size:30px;line-height:1;color:var(--graphite-soft);cursor:pointer}
+.enq-close:hover{color:var(--graphite)}
+.enq-inner h2{font-size:30px;line-height:1.15;margin-bottom:8px}
+.enq-inner .note{font-size:14.5px;color:var(--muted);margin-bottom:24px}
+.enq-form .field input,.enq-form .field select,.enq-form .field textarea{background:#fff}
+.enq-form .field textarea{min-height:110px}
+.sent-box{text-align:center;padding:24px 0 8px}
+.sent-box h3{font-size:26px;line-height:1.25;margin:0 0 12px}
+.sent-box p{color:var(--graphite-soft);margin:0 auto 24px;max-width:420px}
+.sent-icon{width:56px;height:56px;border-radius:50%;background:var(--steel-deep);color:#fff;font-size:28px;display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+form.enquiry+.sent-box,.enquiry.sent-box{background:#fff;border:1px solid var(--line);padding:56px 40px}
+@media (max-width:600px){
+  .enq-dialog{width:100%;max-width:100%;max-height:100%;height:100%;margin:0}
+  .enq-inner{padding:52px 20px 28px;min-height:100%}
+  .enq-inner h2{font-size:25px}
+}
