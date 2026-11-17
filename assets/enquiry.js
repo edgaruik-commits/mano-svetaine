@@ -54,24 +54,29 @@
       data._captcha = 'false';
       data.Page = location.pathname;
       btn.disabled = true; btn.textContent = 'Sending…';
-      var ctrl = window.AbortController ? new AbortController() : null;
-      var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 20000);
-      fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data), signal: ctrl ? ctrl.signal : undefined })
+      // FormSubmit can take 20+ s to answer although the e-mail is delivered.
+      // keepalive lets the request finish even if the visitor closes the page;
+      // the visitor sees success on the reply, or after 4 s while it is still on its way.
+      var done = false;
+      function ok() {
+        if (done) return; done = true;
+        if (typeof gtag === 'function') gtag('event', 'generate_lead', { topic: data['Area of interest'] });
+        form.reset(); btn.disabled = false; btn.innerHTML = label; onDone();
+      }
+      function fail() {
+        if (done) return; done = true;
+        msg.className = 'form-msg error';
+        msg.innerHTML = 'Sorry, the message could not be sent. Please e-mail us at <a href="mailto:' + EMAIL + '">' + EMAIL + '</a>.';
+        btn.disabled = false; btn.innerHTML = label;
+      }
+      var wait = setTimeout(ok, 4000);
+      fetch(ENDPOINT, { method: 'POST', keepalive: true, headers: { 'Accept': 'application/json' }, body: new URLSearchParams(data) })
         .then(function (r) { return r.json(); })
         .then(function (r) {
-          clearTimeout(timer);
-          if (r && /activat/i.test(r.message || '')) throw new Error('activation');
-          if (!(r && (r.success === true || r.success === 'true'))) throw new Error('fail');
-          if (typeof gtag === 'function') gtag('event', 'generate_lead', { topic: data['Area of interest'] });
-          form.reset(); onDone();
+          clearTimeout(wait);
+          if (r && (r.success === true || r.success === 'true')) ok(); else fail();
         })
-        .catch(function (err) {
-          clearTimeout(timer);
-          msg.className = 'form-msg error';
-          if (err && err.message === 'activation') { msg.textContent = 'This form is not activated yet. Please e-mail us at ' + EMAIL + '.'; return; }
-          msg.innerHTML = 'Sorry, the message could not be sent. Please e-mail us at <a href="mailto:' + EMAIL + '">' + EMAIL + '</a>.';
-        })
-        .then(function () { btn.disabled = false; btn.innerHTML = label; });
+        .catch(function () { clearTimeout(wait); fail(); });
     });
   }
 
