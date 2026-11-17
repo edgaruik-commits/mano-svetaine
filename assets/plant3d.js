@@ -304,11 +304,21 @@ const puffs=[];for(let i=0;i<24;i++){const p=new THREE.Mesh(new THREE.SphereGeom
 
 const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(still)controls.autoRotate=false;
+const T0=new THREE.Vector3(26,4.5,0),P0=new THREE.Vector3(-10,30,52);
+const DIR=P0.clone().sub(T0).normalize(),D0=P0.distanceTo(T0);
 function resize(){
   const w=wrap.clientWidth,h=wrap.clientHeight;if(!w||!h)return;
   renderer.setSize(w,h);camera.aspect=w/h;
   const wide=w>900;
-  if(wide)camera.setViewOffset(w,h,-w*0.15,h*0.03,w,h);else camera.clearViewOffset();
+  let dist=D0;
+  if(!wide){const half=Math.tan(camera.fov*Math.PI/360);dist=Math.max(D0,48/(2*half*camera.aspect));}
+  camera.position.copy(T0).addScaledVector(DIR,dist);controls.target.copy(T0);
+  scene.fog.near=dist+7;scene.fog.far=dist+85;
+  if(wide)camera.setViewOffset(w,h,-w*0.15,h*0.03,w,h);
+  else{const g=document.querySelector('.hero-gap');
+    const gc=g?g.offsetTop+g.offsetHeight/2:h/2;
+    camera.setViewOffset(w,h,0,-(gc-h/2),w,h);}
+  camera.far=dist+200;
   camera.updateProjectionMatrix();
 }
 addEventListener('resize',resize);resize();

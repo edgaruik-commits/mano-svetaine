@@ -243,12 +243,14 @@ form.enquiry .note{font-size:14px;color:var(--muted);margin-bottom:26px}
 .hero-3d .hero-stats{padding-bottom:64px}
 .hero-3d .stats{margin-top:14px}
 .hero-note{font-size:11.5px;color:#7F7C72;text-align:right;letter-spacing:.04em}
+.hero-gap{display:none}
 @media (max-width:900px){
   .hero-3d{min-height:0}
-  .hero-canvas{position:relative;inset:auto;height:340px;order:2;margin-top:-10px}
-  .hero-3d .hero-text{order:1;padding-bottom:0}
-  .hero-3d .hero-stats{order:3}
   .hero-fade{display:none}
-  .hero-note{text-align:left;margin-top:-6px}
+  .hero-gap{display:block;height:min(78vw,360px);position:relative;z-index:2;pointer-events:none}
+  .hero-3d .hero-text{padding-bottom:28px;background:linear-gradient(180deg,var(--graphite) 0%,var(--graphite) 72%,rgba(28,33,38,.6) 90%,rgba(28,33,38,0) 100%)}
+  .hero-3d .hero-stats{background:linear-gradient(0deg,var(--graphite) 0%,var(--graphite) 80%,rgba(28,33,38,.6) 93%,rgba(28,33,38,0) 100%);padding-top:18px}
+  .hero-note{text-align:left}
 }
+
 @media (hover:none){.hero-note .drag{display:none}}
