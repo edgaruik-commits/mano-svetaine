@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ega-advisory.com/sitemap.xml
