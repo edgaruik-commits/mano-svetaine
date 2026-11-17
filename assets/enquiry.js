@@ -70,12 +70,10 @@
         btn.disabled = false; btn.innerHTML = label;
       }
       var wait = setTimeout(ok, 4000);
-      fetch(ENDPOINT, { method: 'POST', keepalive: true, headers: { 'Accept': 'application/json' }, body: new URLSearchParams(data) })
-        .then(function (r) { return r.json(); })
-        .then(function (r) {
-          clearTimeout(wait);
-          if (r && (r.success === true || r.success === 'true')) ok(); else fail();
-        })
+      // no-cors: FormSubmit delivers the e-mail but its reply cannot be read cross-origin,
+      // so success = the request reached the server; only a network error counts as failure.
+      fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', keepalive: true, body: new URLSearchParams(data) })
+        .then(function () { clearTimeout(wait); ok(); })
         .catch(function () { clearTimeout(wait); fail(); });
     });
   }
