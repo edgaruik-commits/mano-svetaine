@@ -18,7 +18,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--graphite);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
-img{max-width:100%;display:block}
+img{max-width:100%;height:auto;display:block}
 a{color:var(--steel-deep)}
 h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:500;margin:0;letter-spacing:-.01em;color:inherit}
 p{margin:0 0 1em}
@@ -255,3 +255,4 @@ form.enquiry .note{font-size:14px;color:var(--muted);margin-bottom:26px}
 
 
 @media (hover:none){.hero-note .drag{display:none}}
+@media (max-width:600px){.figure{padding:8px}.figure figcaption{margin-top:10px}}
