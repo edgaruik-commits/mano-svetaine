@@ -54,15 +54,21 @@
       data._captcha = 'false';
       data.Page = location.pathname;
       btn.disabled = true; btn.textContent = 'Sending…';
-      fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) })
+      var ctrl = window.AbortController ? new AbortController() : null;
+      var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 20000);
+      fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data), signal: ctrl ? ctrl.signal : undefined })
         .then(function (r) { return r.json(); })
         .then(function (r) {
+          clearTimeout(timer);
+          if (r && /activat/i.test(r.message || '')) throw new Error('activation');
           if (!(r && (r.success === true || r.success === 'true'))) throw new Error('fail');
           if (typeof gtag === 'function') gtag('event', 'generate_lead', { topic: data['Area of interest'] });
           form.reset(); onDone();
         })
-        .catch(function () {
+        .catch(function (err) {
+          clearTimeout(timer);
           msg.className = 'form-msg error';
+          if (err && err.message === 'activation') { msg.textContent = 'This form is not activated yet. Please e-mail us at ' + EMAIL + '.'; return; }
           msg.innerHTML = 'Sorry, the message could not be sent. Please e-mail us at <a href="mailto:' + EMAIL + '">' + EMAIL + '</a>.';
         })
         .then(function () { btn.disabled = false; btn.innerHTML = label; });

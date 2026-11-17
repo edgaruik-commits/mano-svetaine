@@ -289,3 +289,34 @@ form.enquiry+.sent-box,.enquiry.sent-box{background:#fff;border:1px solid var(--
   .enq-inner{padding:52px 20px 28px;min-height:100%}
   .enq-inner h2{font-size:25px}
 }
+
+/* Compact pop-up form */
+.enq-dialog{width:min(560px,calc(100% - 32px))}
+.enq-inner{padding:26px 28px 22px}
+.enq-inner .kicker{display:none}
+.enq-inner h2{font-size:23px;margin:0 36px 2px 0}
+.enq-inner .note{font-size:13.5px;margin-bottom:14px}
+.enq-close{top:8px;right:8px;width:40px;height:40px;font-size:26px}
+.enq-form .f-row{gap:12px}
+.enq-form .field{margin-bottom:10px}
+.enq-form .field label{font-size:12.5px;margin-bottom:3px}
+.enq-form .field input,.enq-form .field select,.enq-form .field textarea{padding:8px 11px;font-size:15px}
+.enq-form .field textarea{min-height:72px;height:84px}
+.enq-form .btn{padding:10px 20px;margin-top:4px}
+.enq-form .form-msg{margin-top:8px}
+.enq-dialog .sent-box{padding:18px 0 4px}
+.enq-dialog .sent-box h3{font-size:22px}
+@media (max-width:600px){
+  .enq-dialog{width:100%;height:auto;max-height:100%;margin:auto 0 0}
+  .enq-inner{padding:22px 16px 18px;min-height:0}
+  .enq-inner h2{font-size:21px}
+  .enq-form .f-row{grid-template-columns:1fr 1fr;gap:10px}
+  .enq-form .btn{width:100%;justify-content:center}
+}
+.f-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.field input,.field select,.field textarea{width:100%;min-width:0}
+@media (max-width:600px){
+  .enq-dialog{width:calc(100% - 16px);max-width:calc(100% - 16px);height:fit-content;max-height:calc(100% - 16px);margin:auto}
+  .enq-form .f-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  form.enquiry .f-row{grid-template-columns:1fr}
+}
