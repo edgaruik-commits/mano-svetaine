@@ -2,7 +2,7 @@
    Submissions go to FormSubmit (AJAX) and arrive at info@ega-advisory.com. */
 (function () {
   var EMAIL = 'info@ega-advisory.com';
-  var ENDPOINT = 'https://formsubmit.co/ajax/' + EMAIL;
+  var ENDPOINT = 'https://formsubmit.co/' + EMAIL; // classic (non-AJAX) endpoint, posted into a hidden iframe
   var TOPICS = ['Feasibility & investment', 'New plant setup', 'Production process & recipe', 'Quality control',
     'Commissioning & start-up', 'Staff training', 'Ongoing support for an existing plant', 'Other'];
 
@@ -69,12 +69,23 @@
         msg.innerHTML = 'Sorry, the message could not be sent. Please e-mail us at <a href="mailto:' + EMAIL + '">' + EMAIL + '</a>.';
         btn.disabled = false; btn.innerHTML = label;
       }
-      var wait = setTimeout(ok, 4000);
-      // no-cors: FormSubmit delivers the e-mail but its reply cannot be read cross-origin,
-      // so success = the request reached the server; only a network error counts as failure.
-      fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', keepalive: true, body: new URLSearchParams(data) })
-        .then(function () { clearTimeout(wait); ok(); })
-        .catch(function () { clearTimeout(wait); fail(); });
+      if (!navigator.onLine) { fail(); return; }
+      // Plain HTML form POST into a hidden iframe: works in every browser (no CORS, no fetch).
+      var name = 'fs-' + Date.now();
+      var frame = document.createElement('iframe');
+      frame.name = name; frame.setAttribute('aria-hidden', 'true'); frame.tabIndex = -1;
+      frame.style.cssText = 'position:absolute;width:1px;height:1px;border:0;left:-9999px;top:0';
+      document.body.appendChild(frame);
+      var post = document.createElement('form');
+      post.action = ENDPOINT; post.method = 'POST'; post.target = name; post.acceptCharset = 'UTF-8';
+      post.style.display = 'none';
+      Object.keys(data).forEach(function (k) {
+        var inp = document.createElement('input'); inp.type = 'hidden'; inp.name = k; inp.value = data[k]; post.appendChild(inp);
+      });
+      document.body.appendChild(post);
+      var wait = setTimeout(ok, 5000);
+      frame.addEventListener('load', function () { clearTimeout(wait); ok(); setTimeout(function () { frame.remove(); post.remove(); }, 30000); });
+      post.submit();
     });
   }
 
