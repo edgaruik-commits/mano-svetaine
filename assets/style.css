@@ -256,3 +256,10 @@ form.enquiry .note{font-size:14px;color:var(--muted);margin-bottom:26px}
 
 @media (hover:none){.hero-note .drag{display:none}}
 @media (max-width:600px){.figure{padding:8px}.figure figcaption{margin-top:10px}}
+.field input.err,.field textarea.err{border-color:#B3412F;background:#FBF1EE}
+.form-msg{margin:16px 0 0;font-size:14px;min-height:1px}
+.form-msg.error{color:#B3412F}
+.form-msg a{color:inherit}
+.btn[disabled]{opacity:.6;cursor:wait}
+.enquiry.sent h3{font-size:26px;margin:4px 0 12px}
+.enquiry.sent p{color:var(--graphite-soft);margin:0}
