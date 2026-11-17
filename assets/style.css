@@ -246,11 +246,12 @@ form.enquiry .note{font-size:14px;color:var(--muted);margin-bottom:26px}
 .hero-gap{display:none}
 @media (max-width:900px){
   .hero-3d{min-height:0}
-  .hero-fade{display:none}
-  .hero-gap{display:block;height:min(78vw,360px);position:relative;z-index:2;pointer-events:none}
-  .hero-3d .hero-text{padding-bottom:28px;background:linear-gradient(180deg,var(--graphite) 0%,var(--graphite) 72%,rgba(28,33,38,.6) 90%,rgba(28,33,38,0) 100%)}
-  .hero-3d .hero-stats{background:linear-gradient(0deg,var(--graphite) 0%,var(--graphite) 80%,rgba(28,33,38,.6) 93%,rgba(28,33,38,0) 100%);padding-top:18px}
+  .hero-fade{background:linear-gradient(180deg,var(--graphite) 0%,rgba(28,33,38,.82) 22%,rgba(28,33,38,.5) 45%,rgba(28,33,38,.5) 70%,rgba(28,33,38,.9) 82%,var(--graphite) 92%)}
+  .hero-3d .hero-text{padding-bottom:36px}
+  .hero-3d .hero-text h1,.hero-3d .hero-text p{text-shadow:0 1px 12px rgba(28,33,38,.9),0 0 2px rgba(28,33,38,.8)}
+  .hero-3d .hero-stats{padding-top:8px}
   .hero-note{text-align:left}
 }
+
 
 @media (hover:none){.hero-note .drag{display:none}}

@@ -23,9 +23,9 @@ const sun=new THREE.DirectionalLight(0xffffff,0.8);sun.position.set(20,40,25);su
 sun.shadow.mapSize.set(2048,2048);Object.assign(sun.shadow.camera,{left:-30,right:30,top:30,bottom:-30});
 sun.target.position.set(17,0,0);scene.add(sun,sun.target);
 
-const ground=new THREE.Mesh(new THREE.PlaneGeometry(110,60),new THREE.MeshStandardMaterial({color:0x22292f,roughness:1}));
+const ground=new THREE.Mesh(new THREE.PlaneGeometry(800,800),new THREE.MeshStandardMaterial({color:0x22292f,roughness:1}));
 ground.rotation.x=-Math.PI/2;ground.position.set(25,0,0);ground.receiveShadow=true;scene.add(ground);
-const grid=new THREE.GridHelper(110,110,0x3a444c,0x2b3339);grid.position.set(25,0.01,0);scene.add(grid);
+const grid=new THREE.GridHelper(400,400,0x3a444c,0x2b3339);grid.position.set(25,0.01,0);scene.add(grid);
 
 const C={steel:0x9aa3aa,blue:0x2f6fa8,yellow:0xe0a321,green:0x4f8a4b,grey:0x6b747b,dark:0x3b4247,orange:0xd9731a,red:0xb5402f,belt:0x2b2b2b,white:0xdfe3e6};
 const M={};const mat=c=>M[c]||(M[c]=new THREE.MeshStandardMaterial({color:c,roughness:0.55,metalness:0.35}));
@@ -311,14 +311,14 @@ function resize(){
   renderer.setSize(w,h);camera.aspect=w/h;
   const wide=w>900;
   let dist=D0;
-  if(!wide){const half=Math.tan(camera.fov*Math.PI/360);dist=Math.max(D0,48/(2*half*camera.aspect));}
+  if(!wide){const half=Math.tan(camera.fov*Math.PI/360);dist=Math.max(D0,44/(2*half*camera.aspect));}
   camera.position.copy(T0).addScaledVector(DIR,dist);controls.target.copy(T0);
-  scene.fog.near=dist+7;scene.fog.far=dist+85;
+  scene.fog.near=dist+5;scene.fog.far=dist+(wide?85:60);
   if(wide)camera.setViewOffset(w,h,-w*0.15,h*0.03,w,h);
-  else{const g=document.querySelector('.hero-gap');
-    const gc=g?g.offsetTop+g.offsetHeight/2:h/2;
+  else{const a=document.querySelector('.hero-3d .actions'),r0=wrap.getBoundingClientRect();
+    const gc=a?a.getBoundingClientRect().top-r0.top-Math.min(w*0.32,150):h/2;
     camera.setViewOffset(w,h,0,-(gc-h/2),w,h);}
-  camera.far=dist+200;
+  camera.far=dist+400;
   camera.updateProjectionMatrix();
 }
 addEventListener('resize',resize);resize();
