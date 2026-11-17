@@ -224,3 +224,31 @@ form.enquiry .note{font-size:14px;color:var(--muted);margin-bottom:26px}
   .f-top{grid-template-columns:1fr}
   .f-bottom{flex-direction:column}
 }
+
+/* Home hero with 3D plant model */
+.hero-3d{display:flex;flex-direction:column;min-height:min(860px,calc(100vh - 77px))}
+.hero-3d::after{display:none}
+.hero-canvas{position:absolute;inset:0;z-index:0;opacity:0;transition:opacity 1.2s ease}
+.hero-canvas.ready{opacity:1}
+
+.hero-canvas canvas{display:block;width:100%!important;height:100%!important}
+.hero-fade{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(90deg,var(--graphite) 0%,rgba(28,33,38,.94) 30%,rgba(28,33,38,.35) 55%,rgba(28,33,38,0) 72%),
+             linear-gradient(0deg,var(--graphite) 0%,rgba(28,33,38,.85) 16%,rgba(28,33,38,0) 34%)}
+.hero-3d .wrap{position:relative;z-index:2;width:100%;pointer-events:none}
+.hero-3d .wrap a{pointer-events:auto}
+.hero-3d .hero-text{padding-top:100px;padding-bottom:40px;flex:1}
+.hero-3d .hero-text h1{max-width:600px}
+.hero-3d .hero-text .sub,.hero-3d .hero-text .lead{max-width:540px}
+.hero-3d .hero-stats{padding-bottom:64px}
+.hero-3d .stats{margin-top:14px}
+.hero-note{font-size:11.5px;color:#7F7C72;text-align:right;letter-spacing:.04em}
+@media (max-width:900px){
+  .hero-3d{min-height:0}
+  .hero-canvas{position:relative;inset:auto;height:340px;order:2;margin-top:-10px}
+  .hero-3d .hero-text{order:1;padding-bottom:0}
+  .hero-3d .hero-stats{order:3}
+  .hero-fade{display:none}
+  .hero-note{text-align:left;margin-top:-6px}
+}
+@media (hover:none){.hero-note .drag{display:none}}
